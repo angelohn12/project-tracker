@@ -43,6 +43,7 @@ body{padding-bottom:60px}
 button{font-family:inherit;cursor:pointer}
 input,select,textarea{font-family:inherit}
 .ic{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block;vertical-align:middle}
+.logo-ic{fill:currentColor;stroke:none}
 
 /* ---------- LOGIN ---------- */
 #login{position:fixed;inset:0;background:radial-gradient(120% 120% at 30% 0%,#28304a,#141824);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
@@ -184,7 +185,8 @@ header.top .spacer{flex:1}
 .fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent)}
 .fld textarea{resize:vertical;min-height:60px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}}
 .prio-pick{display:flex;gap:8px}
 .prio-pick .pp{flex:1;border:1.5px solid var(--border-2);border-radius:10px;padding:9px 0;text-align:center;font-size:13px;font-weight:600;color:var(--ink2)}
 .prio-pick .pp.sel[data-p="1"]{background:var(--p1-bg);border-color:var(--p1);color:var(--p1)}
@@ -242,6 +244,7 @@ header.top .spacer{flex:1}
 <!-- ===== ICON SPRITE (Tabler-style, MIT) ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <symbol id="i-dashboard" viewBox="0 0 24 24"><path d="M4 4h6v8h-6z"/><path d="M4 16h6v4h-6z"/><path d="M14 12h6v8h-6z"/><path d="M14 4h6v4h-6z"/></symbol>
+<symbol id="i-logo" viewBox="0 0 24 24"><rect x="3.4" y="13" width="4.6" height="7.5" rx="1.4"/><rect x="9.7" y="8" width="4.6" height="12.5" rx="1.4"/><rect x="16" y="3.5" width="4.6" height="17" rx="1.4"/></symbol>
 <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></symbol>
 <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></symbol>
 <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></symbol>
@@ -266,7 +269,7 @@ header.top .spacer{flex:1}
 <!-- ===================== LOGIN ===================== -->
 <div id="login">
   <div class="login-card">
-    <div class="logo"><svg class="ic"><use href="#i-dashboard"/></svg></div>
+    <div class="logo"><svg class="ic logo-ic"><use href="#i-logo"/></svg></div>
     <h1>Project Tracker</h1>
     <p>Your project tracking dashboard</p>
     <input type="password" id="pw" placeholder="Password" autocomplete="current-password">
@@ -279,7 +282,7 @@ header.top .spacer{flex:1}
 <div id="app">
   <header class="top">
     <div class="brand">
-      <div class="mk"><svg class="ic"><use href="#i-dashboard"/></svg></div>
+      <div class="mk"><svg class="ic logo-ic"><use href="#i-logo"/></svg></div>
       <h1>Project Tracker<small>OPERATIONS DASHBOARD</small></h1>
     </div>
     <div class="spacer"></div>
@@ -344,6 +347,16 @@ header.top .spacer{flex:1}
         <select id="f-estado"><option value="activo">Active</option><option value="pausado">Paused</option><option value="completado">Completed</option></select>
       </div>
       <div class="fld"><label>Target / goal</label><textarea id="f-target" placeholder="e.g. Close 8 expert calls before Jul 30"></textarea></div>
+      <div class="fld">
+        <label>Scope (once the project is won)</label>
+        <div class="rev-box">
+          <div class="grid3">
+            <div class="fld" style="margin-bottom:0"><label>Calls requested</label><input id="f-scope-calls" type="number" min="0" placeholder="e.g. 12"></div>
+            <div class="fld" style="margin-bottom:0"><label>Angles</label><input id="f-scope-angles" type="number" min="0" placeholder="e.g. 3"></div>
+            <div class="fld" style="margin-bottom:0"><label>Calls per angle</label><input id="f-scope-perangle" type="number" min="0" placeholder="e.g. 4"></div>
+          </div>
+        </div>
+      </div>
       <div class="fld">
         <label>Revenue</label>
         <div class="rev-box">
@@ -422,9 +435,30 @@ header.top .spacer{flex:1}
 <!-- ===================== MODAL: TEAM ===================== -->
 <div class="overlay" id="modal-team">
   <div class="modal">
-    <div class="mh"><div><h2>Team performance</h2><div class="msub">Traceability by associate across all projects</div></div><button class="icon-btn" onclick="cerrar('modal-team')"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <div class="mh"><div><h2>Team</h2><div class="msub">Your associates and their performance across projects</div></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn-ghost2" onclick="nuevoAssoc()"><svg class="ic"><use href="#i-plus"/></svg>Add associate</button>
+        <button class="icon-btn" onclick="cerrar('modal-team')"><svg class="ic"><use href="#i-close"/></svg></button>
+      </div>
+    </div>
     <div class="mb" id="team-body"></div>
     <div class="mf"><button class="btn-ghost" onclick="cerrar('modal-team')">Close</button></div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: ASSOCIATE ===================== -->
+<div class="overlay" id="modal-assoc">
+  <div class="modal sm">
+    <div class="mh"><h2 id="assoc-titulo">Add associate</h2><button class="icon-btn" onclick="cerrar('modal-assoc')"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <div class="mb">
+      <input type="hidden" id="a-id">
+      <div class="fld"><label>Name *</label><input id="a-nombre" placeholder="e.g. Maria Lopez"></div>
+      <div class="fld" style="margin-bottom:0"><label>Currently working on</label><input id="a-status" placeholder="e.g. Sourcing energy experts for Acme project"></div>
+    </div>
+    <div class="mf" id="assoc-footer">
+      <button class="btn-ghost" onclick="cerrar('modal-assoc')">Cancel</button>
+      <button class="btn-save" onclick="guardarAssoc()">Save</button>
+    </div>
   </div>
 </div>
 
@@ -454,7 +488,7 @@ header.top .spacer{flex:1}
    Project Tracker — single-file operations dashboard
    Optional backend: Google Apps Script (see setup guide)
    ============================================================ */
-var APP_VERSION='2026.07.16.3';
+var APP_VERSION='2026.07.16.4';
 var PASSWORD='Masterlove1203@';
 var LS_DATA='ptrack_data';
 var LS_URL='ptrack_scripturl';
@@ -462,7 +496,7 @@ var LS_AUTH='ptrack_auth';
 var LS_THEME='ptrack_theme';
 
 var SCRIPT_URL=localStorage.getItem(LS_URL)||'';
-var DATA={proyectos:[]};
+var DATA={proyectos:[],associates:[]};
 var filtro='all';
 
 /* ---------- theme ---------- */
@@ -508,7 +542,7 @@ $('pw').addEventListener('keydown',function(e){if(e.key==='Enter')entrar();});
 
 /* ---------- boot ---------- */
 function iniciar(){applyTheme(document.documentElement.getAttribute('data-theme'));cargarLocal();render();if(SCRIPT_URL){sincronizarDesdeNube();}else{setSync('off','Local only');}}
-function cargarLocal(){try{var raw=localStorage.getItem(LS_DATA);if(raw)DATA=JSON.parse(raw);}catch(e){}if(!DATA||!DATA.proyectos)DATA={proyectos:[]};}
+function cargarLocal(){try{var raw=localStorage.getItem(LS_DATA);if(raw)DATA=JSON.parse(raw);}catch(e){}if(!DATA||!DATA.proyectos)DATA={proyectos:[]};if(!DATA.associates)DATA.associates=[];}
 function guardarLocal(){localStorage.setItem(LS_DATA,JSON.stringify(DATA));}
 
 /* ---------- cloud sync ---------- */
@@ -519,7 +553,7 @@ function sincronizarDesdeNube(){
   fetch(SCRIPT_URL+'?accion=leer&key='+encodeURIComponent(PASSWORD),{method:'GET'})
     .then(function(r){return r.json();})
     .then(function(res){
-      if(res&&res.ok){if(res.datos&&res.datos.proyectos){DATA=res.datos;guardarLocal();render();}setSync('ok','Synced');}
+      if(res&&res.ok){if(res.datos&&res.datos.proyectos){DATA=res.datos;if(!DATA.associates)DATA.associates=[];guardarLocal();render();}setSync('ok','Synced');}
       else{setSync('off','Not connected');}
     })
     .catch(function(){setSync('off','Not connected');});
@@ -538,6 +572,7 @@ function guardarEnNube(){
 /* ---------- associates ---------- */
 function knownAssociates(){
   var set={};
+  (DATA.associates||[]).forEach(function(a){if(a.name)set[a.name]=1;});
   DATA.proyectos.forEach(function(p){
     (p.associates||'').split(',').forEach(function(n){n=n.trim();if(n)set[n]=1;});
     (p.calls||[]).forEach(function(c){if(c.associate)set[c.associate.trim()]=1;});
@@ -659,10 +694,11 @@ function cardHTML(p){
       '</div>'+
     '</div><span class="pill p'+pr+'">P'+pr+'</span></div>'+
     (p.target?'<div class="target">'+ic('target')+'<span>'+esc(p.target)+'</span></div>':'')+
+    (p.scopeCalls?'<div class="target">'+ic('chart')+'<span>'+p.scopeCalls+' calls requested'+(p.scopeAngles?' · '+p.scopeAngles+' angle'+(p.scopeAngles===1?'':'s'):'')+(p.scopePerAngle?' · '+p.scopePerAngle+' calls/angle':'')+'</span></div>':'')+
     '<div class="meta">'+
       (fechas?'<span>'+ic('calendar')+fechas+'</span>':'')+
       (assocCount?'<span>'+ic('users')+assocCount+' associate'+(assocCount===1?'':'s')+'</span>':'')+
-      '<span class="calls">'+ic('phone')+nCalls+' call'+(nCalls===1?'':'s')+'</span>'+
+      '<span class="calls">'+ic('phone')+nCalls+(p.scopeCalls?' / '+p.scopeCalls:'')+' call'+(nCalls===1&&!p.scopeCalls?'':'s')+(p.scopeCalls?' ('+pct(nCalls,p.scopeCalls)+'%)':'')+'</span>'+
       (revTxt?'<span class="rev">'+ic('dollar')+revTxt+'</span>':'')+
     '</div>'+
     (last?'<div class="lastup">'+ic('message')+'<span><b style="font-weight:600">'+fmtFecha(last.fecha)+':</b> '+last.txt+'</span></div>':'')+
@@ -684,6 +720,7 @@ function nuevoProyecto(){
   $('f-id').value='';$('f-nombre').value='';$('f-cliente').value='';$('f-red').value='';
   $('f-tipo').value='';$('f-asociados').value='';$('f-inicio').value=hoyISO();$('f-fin').value='';
   $('f-estado').value='activo';$('f-target').value='';$('f-notas').value='';
+  $('f-scope-calls').value='';$('f-scope-angles').value='';$('f-scope-perangle').value='';
   $('f-rev').checked=false;$('f-rev-tipo').value='llamadas';$('f-rev-monto').value='';toggleRev();
   pickPrio(2);$('modal').classList.add('show');
 }
@@ -693,6 +730,7 @@ function editarProyecto(id){
   $('f-id').value=p.id;$('f-nombre').value=p.nombre||'';$('f-cliente').value=p.cliente||'';$('f-red').value=p.red||'';
   $('f-tipo').value=p.tipo||'';$('f-asociados').value=p.associates||'';$('f-inicio').value=p.inicio||'';$('f-fin').value=p.fin||'';
   $('f-estado').value=p.estado||'activo';$('f-target').value=p.target||'';$('f-notas').value=p.notas||'';
+  $('f-scope-calls').value=p.scopeCalls||'';$('f-scope-angles').value=p.scopeAngles||'';$('f-scope-perangle').value=p.scopePerAngle||'';
   $('f-rev').checked=!!p.tieneRevenue;$('f-rev-tipo').value=p.revenueTipo||'llamadas';$('f-rev-monto').value=p.revenueMonto||'';toggleRev();
   pickPrio(Number(p.prioridad)||2);$('modal').classList.add('show');
 }
@@ -707,6 +745,7 @@ function guardarProyecto(){
     prioridad:Number($('f-prio').value)||2,
     inicio:$('f-inicio').value,fin:$('f-fin').value,estado:$('f-estado').value,
     target:$('f-target').value.trim(),notas:$('f-notas').value.trim(),
+    scopeCalls:Number($('f-scope-calls').value)||0,scopeAngles:Number($('f-scope-angles').value)||0,scopePerAngle:Number($('f-scope-perangle').value)||0,
     tieneRevenue:$('f-rev').checked,revenueTipo:$('f-rev-tipo').value,revenueMonto:Number($('f-rev-monto').value)||0,
     calls:existing?(existing.calls||[]):[],
     updates:existing?(existing.updates||[]):[]
@@ -756,6 +795,16 @@ function abrirHist(id){
   var calls=(p.calls||[]).slice().sort(function(a,b){return String(a.fecha)<String(b.fecha)?1:-1;});
   var ups=(p.updates||[]).slice().sort(function(a,b){return String(a.fecha)<String(b.fecha)?1:-1;});
   var html='';
+  if(p.scopeCalls){
+    var scopePct=pct(calls.length,p.scopeCalls);
+    html+='<div class="panel" style="box-shadow:none;margin-bottom:16px;padding:13px 15px">'+
+      '<div class="ph" style="margin-bottom:8px">'+ic('chart')+'Scope'+'</div>'+
+      '<div class="rate-sub" style="margin:0 0 8px">'+calls.length+' of '+p.scopeCalls+' calls logged'+
+      (p.scopeAngles?' · '+p.scopeAngles+' angle'+(p.scopeAngles===1?'':'s'):'')+
+      (p.scopePerAngle?' · '+p.scopePerAngle+' calls/angle target':'')+'</div>'+
+      '<div class="track"><div class="fill" style="width:'+scopePct+'%;background:var(--accent)"></div></div>'+
+      '</div>';
+  }
   html+='<div class="sec-label">Calls ('+calls.length+')</div>';
   if(!calls.length)html+='<div class="no-up">No calls logged yet</div>';
   else html+='<div class="hist">'+calls.map(function(c){
@@ -780,22 +829,65 @@ function abrirHist(id){
 function borrarLlamada(pid,cid){var p=getProj(pid);if(!p)return;p.calls=(p.calls||[]).filter(function(c){return c.id!==cid;});guardarEnNube();render();abrirHist(pid);}
 function borrarNota(pid,idx){var p=getProj(pid);if(!p||!p.updates)return;p.updates.splice(idx,1);guardarEnNube();render();abrirHist(pid);}
 
-/* ---------- team performance ---------- */
+/* ---------- team / associates ---------- */
+function getAssoc(id){return (DATA.associates||[]).find(function(x){return x.id===id;});}
+function findAssocByName(name){return (DATA.associates||[]).find(function(x){return (x.name||'').toLowerCase()===String(name||'').toLowerCase();});}
+function nuevoAssoc(){
+  $('assoc-titulo').textContent='Add associate';
+  $('a-id').value='';$('a-nombre').value='';$('a-status').value='';
+  $('assoc-footer').innerHTML='<button class="btn-ghost" onclick="cerrar(\'modal-assoc\')">Cancel</button><button class="btn-save" onclick="guardarAssoc()">Save</button>';
+  $('modal-assoc').classList.add('show');
+  setTimeout(function(){$('a-nombre').focus();},80);
+}
+function editarAssoc(id){
+  var a=getAssoc(id);if(!a)return;
+  $('assoc-titulo').textContent='Edit associate';
+  $('a-id').value=a.id;$('a-nombre').value=a.name||'';$('a-status').value=a.status||'';
+  $('assoc-footer').innerHTML='<button class="mini danger" style="padding:9px 16px" onclick="borrarAssoc(\''+a.id+'\')">'+ic('trash')+'Delete</button><span style="flex:1"></span><button class="btn-ghost" onclick="cerrar(\'modal-assoc\')">Cancel</button><button class="btn-save" onclick="guardarAssoc()">Save</button>';
+  $('assoc-footer').style.display='flex';
+  $('modal-assoc').classList.add('show');
+}
+function quickAddAssoc(name){
+  $('a-id').value='';$('a-nombre').value=name;$('a-status').value='';
+  $('assoc-titulo').textContent='Add associate';
+  $('assoc-footer').innerHTML='<button class="btn-ghost" onclick="cerrar(\'modal-assoc\')">Cancel</button><button class="btn-save" onclick="guardarAssoc()">Save</button>';
+  $('modal-assoc').classList.add('show');
+}
+function guardarAssoc(){
+  var nombre=$('a-nombre').value.trim();
+  if(!nombre){toast('Add a name',true);$('a-nombre').focus();return;}
+  var id=$('a-id').value;
+  if(id){
+    var a=getAssoc(id);if(a){a.name=nombre;a.status=$('a-status').value.trim();}
+  }else{
+    var dup=findAssocByName(nombre);
+    if(dup){dup.status=$('a-status').value.trim();}
+    else{DATA.associates.push({id:uid(),name:nombre,status:$('a-status').value.trim()});}
+  }
+  cerrar('modal-assoc');guardarEnNube();abrirTeam();toast('Associate saved');
+}
+function borrarAssoc(id){
+  var a=getAssoc(id);if(!a)return;
+  if(!confirm('Remove "'+a.name+'" from the roster? This does not remove their logged calls.'))return;
+  DATA.associates=DATA.associates.filter(function(x){return x.id!==id;});
+  cerrar('modal-assoc');guardarEnNube();abrirTeam();toast('Associate removed');
+}
 function abrirTeam(){
   var map={};
+  (DATA.associates||[]).forEach(function(a){map[a.name]={calls:0,rev:0,projs:{},completed:0,assocId:a.id,status:a.status||''};});
   DATA.proyectos.forEach(function(p){
-    (p.associates||'').split(',').forEach(function(n){n=n.trim();if(n){if(!map[n])map[n]={calls:0,rev:0,projs:{},completed:0};map[n].projs[p.id]=1;}});
+    (p.associates||'').split(',').forEach(function(n){n=n.trim();if(n){if(!map[n])map[n]={calls:0,rev:0,projs:{},completed:0,assocId:null,status:''};map[n].projs[p.id]=1;}});
     (p.calls||[]).forEach(function(c){
       var n=(c.associate||'').trim();if(!n)return;
-      if(!map[n])map[n]={calls:0,rev:0,projs:{},completed:0};
+      if(!map[n])map[n]={calls:0,rev:0,projs:{},completed:0,assocId:null,status:''};
       map[n].calls++;map[n].rev+=Number(c.revenue)||0;map[n].projs[p.id]=1;
       if(c.outcome==='completed')map[n].completed++;
     });
   });
-  var rows=Object.keys(map).map(function(n){var m=map[n];return {name:n,calls:m.calls,rev:m.rev,projs:Object.keys(m.projs).length,completed:m.completed};});
-  rows.sort(function(a,b){return b.calls-a.calls||b.rev-a.rev;});
+  var rows=Object.keys(map).map(function(n){var m=map[n];return {name:n,calls:m.calls,rev:m.rev,projs:Object.keys(m.projs).length,completed:m.completed,assocId:m.assocId,status:m.status};});
+  rows.sort(function(a,b){return b.calls-a.calls||b.rev-a.rev||a.name.localeCompare(b.name);});
   var body=$('team-body');
-  if(!rows.length){body.innerHTML='<div class="no-up">No associates or calls logged yet.<br>Add associates to a project or log a call to see traceability here.</div>';$('modal-team').classList.add('show');return;}
+  if(!rows.length){body.innerHTML='<div class="no-up">No associates yet.<br>Tap &laquo;Add associate&raquo; above to start tracking who\'s working on what.</div>';$('modal-team').classList.add('show');return;}
   var totCalls=rows.reduce(function(s,r){return s+r.calls;},0);
   var totRev=rows.reduce(function(s,r){return s+r.rev;},0);
   var html='<div class="kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:16px">'+
@@ -803,13 +895,18 @@ function abrirTeam(){
     '<div class="kpi" style="box-shadow:none"><div class="sub" style="margin:0 0 6px">Total calls</div><div class="val">'+totCalls+'</div></div>'+
     '<div class="kpi" style="box-shadow:none"><div class="sub" style="margin:0 0 6px">Revenue from calls</div><div class="val">'+money(totRev)+'</div></div>'+
     '</div>';
-  html+='<table class="team-tbl"><thead><tr><th>Associate</th><th class="r">Calls</th><th class="r">Completed</th><th class="r">Projects</th><th class="r">Revenue</th></tr></thead><tbody>';
+  html+='<table class="team-tbl"><thead><tr><th>Associate</th><th>Currently working on</th><th class="r">Calls</th><th class="r">Completed</th><th class="r">Projects</th><th class="r">Revenue</th><th></th></tr></thead><tbody>';
   html+=rows.map(function(r){
+    var editBtn=r.assocId
+      ?'<button class="mini" style="padding:5px 8px" onclick="editarAssoc(\''+r.assocId+'\')">'+ic('edit')+'</button>'
+      :'<button class="mini" style="padding:5px 8px" onclick="quickAddAssoc(\''+esc(r.name).replace(/'/g,"\\'")+'\')">'+ic('plus')+'</button>';
     return '<tr><td><span class="avatar">'+esc(initials(r.name))+'</span><span class="nm">'+esc(r.name)+'</span></td>'+
+      '<td style="color:var(--ink2)">'+(r.status?esc(r.status):'<span style="color:var(--ink3)">—</span>')+'</td>'+
       '<td class="r big">'+r.calls+'</td>'+
       '<td class="r">'+r.completed+' <span style="color:var(--ink3)">('+pct(r.completed,r.calls)+'%)</span></td>'+
       '<td class="r">'+r.projs+'</td>'+
-      '<td class="r">'+(r.rev?money(r.rev):'—')+'</td></tr>';
+      '<td class="r">'+(r.rev?money(r.rev):'—')+'</td>'+
+      '<td class="r">'+editBtn+'</td></tr>';
   }).join('');
   html+='</tbody></table>';
   body.innerHTML=html;
@@ -837,7 +934,7 @@ function guardarScriptUrl(){
 
 /* ---------- overlay close ---------- */
 function cerrar(id){$(id).classList.remove('show');}
-['modal','modal-call','modal-note','modal-hist','modal-team','modal-ajustes'].forEach(function(id){$(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});});
+['modal','modal-call','modal-note','modal-hist','modal-team','modal-assoc','modal-ajustes'].forEach(function(id){$(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});});
 
 /* ---------- auto-login ---------- */
 if(localStorage.getItem(LS_AUTH)==='1'){$('login').style.display='none';$('app').style.display='block';iniciar();}
