@@ -488,14 +488,15 @@ header.top .spacer{flex:1}
    Project Tracker — single-file operations dashboard
    Optional backend: Google Apps Script (see setup guide)
    ============================================================ */
-var APP_VERSION='2026.07.16.4';
+var APP_VERSION='2026.07.16.5';
 var PASSWORD='Masterlove1203@';
 var LS_DATA='ptrack_data';
 var LS_URL='ptrack_scripturl';
 var LS_AUTH='ptrack_auth';
 var LS_THEME='ptrack_theme';
+var DEFAULT_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyNwxtCEPws18PQ5H77XYnpmJ4t2CAhgegkOpZs0GdoDK0wQlWts-IT9_LVkPMS6ak_ig/exec';
 
-var SCRIPT_URL=localStorage.getItem(LS_URL)||'';
+var SCRIPT_URL=localStorage.getItem(LS_URL)||DEFAULT_SCRIPT_URL;
 var DATA={proyectos:[],associates:[]};
 var filtro='all';
 
